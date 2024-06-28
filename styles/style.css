@@ -1140,7 +1140,7 @@ body.touch .footer-links a span {
   position: relative;
   flex-flow: column;
   color: white;
-  font-size: 24px;
+  font-size: clamp(1rem, 3.7vw, 1.5rem);
   text-align: center;
 }
 .hero img, .hero svg {
