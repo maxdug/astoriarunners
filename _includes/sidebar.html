@@ -1,0 +1,33 @@
+<!-- Recent Post -->
+    <h1> Most recent post</h1>
+    {% for post in site.posts limit:5 %}
+          <a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
+      <hr>
+    {% endfor %}
+
+
+<!-- Category -->
+    <h1> Category</h1>
+    {% assign categories_list = site.categories %}
+      {% if categories_list.first[0] == null %}
+        {% for category in categories_list %}
+                <a href="{{ category | prepend: '/category/' | prepend: site.url }}"> {{ category | capitalize }} ({{ site.tags[category].size }})</a>
+            <hr class="recent-hr">
+        {% endfor %}
+      {% else %}
+        {% for category in categories_list %}
+                <a href="{{ category[0] | prepend: '/category/' | prepend: site.url }}" class="recent-item"> {{ category[0] | capitalize }} ({{ category[1].size }})</a>
+            <hr class="recent-hr">
+        {% endfor %}
+      {% endif %}
+   {% assign categories_list = nil %}
+
+
+
+<!-- Tags -->
+    <h1> Tags</h1>
+        {% for tag in site.tags %}
+          {% assign t = tag | first %}
+            {% assign posts = tag | last %}
+                <a href="{{ t | prepend: '/tag/' | prepend: site.url }}">{{t | downcase | replace:" ","-" }}</a>
+        {% endfor %}

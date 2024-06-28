@@ -1,0 +1,1704 @@
+@charset "UTF-8";
+
+
+
+
+
+
+
+
+
+/*
+
+Table of Contents
+
+ dP""b8  dP"Yb  88b 88 888888 888888 88b 88 888888 .dP"Y8
+dP   `" dP   Yb 88Yb88   88   88__   88Yb88   88   `Ybo."
+Yb      Yb   dP 88 Y88   88   88""   88 Y88   88   o.`Y8b
+ YboodP  YbodP  88  Y8   88   888888 88  Y8   88   8bodP'
+
+  ┌─ Global
+  │  └─ Page Titles
+  │
+  ├─ Typography
+  │  └─ Section Titles
+  │
+  ├─ Layout
+  │  └─ Paragraph / Body Text
+  │
+  ├─ Components
+  │  └─ Paragraph / Body Text
+  │
+  └─ 14px Body Copy / P
+     └─ Headline, Strong, and Bold Text
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------------------
+ 		 dP""b8  88       dP"Yb   88""Yb     db     88
+		dP   `"  88      dP   Yb  88__dP    dPYb    88
+		Yb  "88  88  .o  Yb   dP  88""Yb   dP__Yb   88  .o
+ 		 YboodP  88ood8   YbodP   88oodP  dP""""Yb  88ood8
+----------------------------------------------------------- */
+
+* {
+  padding: 0;
+  margin: 0;
+} /* Used as a reset for everything ever */
+
+html {
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+img {
+  /* width: 100%; */
+}
+
+.content img {
+width: 100%;
+}
+
+.img-modal {
+  position: relative;
+}
+
+.img-modal:hover {
+  cursor: zoom-in;
+}
+body {
+  display: flex;
+  height: calc(100vh - 45px);
+  flex-direction: column;
+  margin: 45px 0 0;
+  color: #555;
+  font-family: sans-serif;
+}
+
+:root {
+  --primary: DodgerBlue; /*  */
+}
+
+.video {
+  flex-basis: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: auto;
+}
+.video iframe,
+.video object,
+.video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.ytp-thumbnail .html5-stop-propagation {
+  background-image: url(http://maxduggan.com/images/blog_bg.jpg) !important;
+  background-color: #ccc !important;
+}
+
+input {
+  cursor: pointer;
+}
+
+/*
+   db     dP""b8  dP""b8 888888 .dP"Y8 .dP"Y8     888888  dP"Yb  88""Yb 8b    d8
+  dPYb   dP   `" dP   `" 88__   `Ybo." `Ybo."     88__   dP   Yb 88__dP 88b  d88
+ dP__Yb  Yb      Yb      88""   o.`Y8b o.`Y8b     88""   Yb   dP 88"Yb  88YbdP88
+dP""""Yb  YboodP  YboodP 888888 8bodP' 8bodP'     88      YbodP  88  Yb 88 YY 88
+*/
+#access-form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px 0  30px 0;
+  align-items: center
+}
+
+#access-form .form-field {
+  display: flex;
+  flex-flow: row wrap;
+  position:relative;
+  flex: 1 0 160px;
+  margin: 20px 10px 10px 0;
+  padding: 0;
+  min-width: calc(66% - 20px);
+}
+
+#access-form input[type="password"] {
+  font-size:18px;
+  padding:10px;
+  border:none;
+  border-bottom:1px solid #777;
+  flex: 1 0 160px;
+  cursor: text;
+}
+
+#access-form label {
+  width: 100%;
+  color:#999;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:0;
+  top:10px;
+  transition: 350ms ease-in-out all;
+}
+#access-form input:focus ~ label, #access-form input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color: var(--primary);
+}
+body.touch #access-form label {
+  top:-20px;
+  font-size:14px;
+  color: var(--primary);
+  transition: none;
+}
+
+input:focus,
+textarea:focus, #access-form input[type="password"]:focus {
+  border-bottom: none;
+  border-right: none;
+  outline: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: #333;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px white inset;/*your box-shadow*/
+    -webkit-text-fill-color: #333;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{
+  position:relative;
+  display:block;
+  width: 100%;
+}
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background: var(--primary);
+  transition: 350ms ease-in-out all;
+  -moz-transition: 350ms ease-in-out all;
+  -webkit-transition: 350ms ease-in-out all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background: var(--primary); }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background: var(--primary); }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background: var(--primary); }
+  to 	{ width:0; background:transparent; }
+}
+
+
+
+
+
+/*-------------------------------------------------------------------------------------------
+
+  888888 Yb  dP 88""Yb 888888  dP"Yb   dP""b8 88""Yb    db    88""Yb 88  88 Yb  dP
+    88    YbdP  88__dP 88__   dP   Yb dP   `" 88__dP   dPYb   88__dP 88  88  YbdP
+    88     8P   88"""  88""   Yb   dP Yb  "88 88"Yb   dP__Yb  88"""  888888   8P
+    88    dP    88     888888  YbodP   YboodP 88  Yb dP""""Yb 88     88  88  dP
+
+------------------------------------------------------------------------------------------- */
+/*
+  • Choose a primary style of sans or sans-serif
+  • Decide if the brand has a secondary contrast of the opposite
+  • Scale should be based on visual differentiation between steps
+  • I tend to use verdana for base work since it's simple and legible for body Copy
+  • Alternate bold and normal and you go up the scale to provide differentiation
+
+  ┌─ 44px Page Title / H1
+  │  └─ Page Titles
+  │
+  ├─ 30px Section Title / H2
+  │  └─ Section Titles
+  │
+  ├─ 26px Sub Title / H3
+  │  └─ Paragraph / Body Text
+  │
+  ├─ 18px Label / H4
+  │  └─ Paragraph / Body Text
+  │
+  └─ 14px Body Copy / P
+     └─ Headline, Strong, and Bold Text
+                                                                                                */
+
+.txt-center {
+  text-align: center;
+}
+
+.txt-rt {
+  text-align: right;
+}
+
+.txt-lt {
+  text-align: left;
+}
+
+/* H E A D E R S
+----------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: .06em;
+  width: 100%;
+}
+h1,
+h1 a:link,
+h1 a:visited {
+  flex: 0 0 100%;
+  font-size: clamp(1.6em,4vw,2.2em);
+  margin: 30px 0 20px;
+  color: #333;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+h1 a:hover {
+  color: black;
+}
+
+h2,
+h2 a:link,
+h2 a:visited {
+  width: 100%;
+  font-size: 1.5em;
+  margin: 40px 0 15px;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+h2 a:hover {
+  color: Black;
+}
+
+h3, h3 a {
+  width: 100%;
+  font-size: 1.2em;
+  margin: 30px 0 10px;
+  color: #333;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+h3 a:hover {
+  color: Black;
+}
+h4 {
+  width: 100%;
+  font-size: .9em;
+  margin: 10px 0 6px;
+  color: #333;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+h4 a:hover {
+  color: Black;
+}
+
+a {
+  color: #555;
+  text-decoration: underline dashed 1px #777;
+  transition: color 350ms ease-in-out;
+}
+a:hover, a:focus {
+  color: var(--primary);
+  text-decoration: none;
+}
+a img {
+  border-width: 0;
+}
+
+p {
+  width: 100%;
+  font-size: 1em;
+  margin: 0 0 10px 0;
+  letter-spacing: .03em;
+  line-height: 1.5em;
+  color: #555;
+}
+hr {
+  height: 1px;
+  border-top: solid 1px #999;
+  border-bottom: none;
+  clear: both;
+}
+b,
+strong {
+  font-weight: 700;
+}
+
+q,
+blockquote {
+  padding: 4%;
+  display: block;
+  clear: both;
+  font-size: 22px;
+  color: black;
+}
+q::before, blockquote::before {
+  display: block;
+  height: 24px;
+  margin-left: -30px;
+  font-size: 60px;
+}
+q::after, blockquote::after {
+  display: none;
+}
+q .author {
+  display: block;
+  float: right;
+  font-size: 16px;
+  margin-top: 10px;
+  color: #777;
+}
+
+ul {
+  list-style: disc;
+  padding: 0 0 0 20px;
+  margin: 0 0 10px 0;
+}
+.ul_ {
+  list-style: none;
+}
+.ul_ li {
+  list-style: none;
+  display: inline;
+}
+ol {
+  list-style: decimal;
+  padding: 0 0 0 20px;
+  margin: 0 0 10px 0;
+}
+
+
+/* ----- B U T T O N S ----- */
+/* could these be refactored with currentColor? */
+
+button, [type="submit"], [type="button"], [type="reset"], .button, .btn {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 1em .8rem;
+  padding: .5em 1.7em;
+  font-size: 1.2rem;
+  border-radius: .5rem;
+  -webkit-appearance: none;
+  text-decoration: none;
+  text-align: center;
+  background-color: white;
+  border: none;
+  transition: color 350ms ease-in-out, background-color 350ms ease-in-out;
+}
+.btn-sm {
+  font-size: 1rem;
+}
+.btn-lg {
+  font-size: 1.4rem;
+}
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+.btn-primary:hover, .btn-primary:focus {
+
+}
+.btn-outline-primary {
+  border: 2px solid var(--primary);
+  color: var(--primary)
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  background-color: var(--primary);
+  color: white;
+}
+.btn-light {
+  background-color: white;
+  color: #333;
+}
+.btn-light:hover, .btn-light:focus {
+  background-color: var(--primary);
+  color: white;
+}
+.btn-outline-light {
+  background-color: initial;
+  border: 2px solid white;
+  color: white;
+}
+.btn-outline-light:hover, .btn-outline-light:focus {
+  background-color: white;
+  color: var(--primary)
+}
+.btn-dark {
+  background-color: #333;
+  color: white;
+}
+.btn-dark:hover, .btn-dark:focus {
+  background-color: black;
+}
+.btn-outline-dark {
+  border: 2px solid #333;
+  color: #333;
+}
+.btn-outline-dark:hover, .btn-outline-dark:focus {
+  background-color: #333;
+  color: white;
+}
+
+/* Spans full width of space */
+.btn-block {
+
+}
+body.touch button, body.touch [type="submit"], body.touch [type="button"], body.touch [type="reset"], body.touch .button, body.touch .btn {
+  transition: none;
+}
+
+/*
+88  88 888888    db    8888b.  888888 88""Yb        dP     888888  dP"Yb   dP"Yb  888888 888888 88""Yb
+88  88 88__     dPYb    8I  Yb 88__   88__dP       dP      88__   dP   Yb dP   Yb   88   88__   88__dP
+888888 88""    dP__Yb   8I  dY 88""   88"Yb       dP       88""   Yb   dP Yb   dP   88   88""   88"Yb
+88  88 888888 dP""""Yb 8888Y"  888888 88  Yb     dP        88      YbodP   YbodP    88   888888 88  Yb
+*/
+header, footer {
+  width: 100%;
+  letter-spacing: .1em;
+  color: #333;
+  display: flex;
+  padding: 0px calc(50% - 720px);
+  max-width: 1440px;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+header {
+	position: fixed;
+	top: 0;
+	z-index: 999;
+  background: rgba(360, 360, 360, 0.93);
+  padding: 11px calc(50% - 720px);
+}
+footer {
+	justify-self: flex-end;
+  background: linear-gradient(to bottom, rgba(240, 240, 240, 0.9) 0%, rgba(360, 360, 360, 0.9) 100%);
+}
+
+#name {
+  display: flex;
+  flex: 1 0 auto;
+  margin: 0 25px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: #333;
+  transition: color 350ms ease-in-out;
+  position: absolute;
+}
+#name svg.logo {
+  height: 20px;
+  width: 50px;
+  margin-right: 10px;
+  fill: #333;
+  transition: fill 350ms ease-in-out;
+}
+#name:hover, #name:focus {
+	color: var(--primary);
+}
+#name:hover svg.logo, #name:focus svg.logo {
+  fill: var(--primary);
+}
+body.touch #name, body.touch svg.logo {
+	color: #333;
+  fill: #333;
+  transition: none;
+}
+
+
+@keyframes nav-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(100%);
+  }
+}
+
+
+nav {
+  display: flex;
+	flex: 0 0 auto;
+  margin: 0 10px;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+}
+nav a {
+  position: relative;
+  margin: 0 7px;
+	padding: 3px 8px;
+  font-size: .9rem;
+	text-decoration: none;
+  transition: 350ms ease-in-out;
+}
+nav a:hover, nav a.sfhover, nav a:focus {
+	color: var(--primary);
+}
+#design a.work::after, #art a.art::after {
+  position: absolute;
+  left: 0;
+  top: 22px;
+  content: "";
+  width: 100%;
+  height: 3px;
+  background: var(--primary);
+  animation: 350ms ease-in-out nav-bar;
+}
+
+.footer-space {
+	flex: 1 0 auto;
+  height: 2px;
+}
+#copyright {
+  flex: 1 0 130px;
+  margin: 10px 15px;
+  font-size: .8rem;
+}
+#back-top {
+  flex: 1 0 110px;
+  text-align: center;
+  margin: 10px;
+	text-decoration: none;
+}
+#back-top:hover {
+  color: DodgerBlue;
+}
+.home #back-top, .art-home #back-top {
+  display: none !important;
+}
+
+
+.footer-links {
+    flex: 1 0 130px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0;
+    align-items: center;
+}
+.footer-links a {
+  display: flex;
+  align-items: center;
+	margin: 0 15px;
+	text-decoration: none;
+  overflow: hidden;
+}
+.footer-links svg {
+	max-width: 1.2rem;
+	max-height: 1.2rem;
+}
+a .footerIcon {
+	fill: #444;
+  transition: fill 350ms ease-in-out;
+}
+footer a:hover .footerIcon{
+	fill:  var(--primary);
+}
+.footer-links a span {
+    margin-left: 10px;
+    font-weight: lighter;
+    font-size: .8em;
+    color: var(--primary);
+    transition: 350ms ease-in-out;
+}
+.footer-links .contact span {
+  margin-right: -92px;
+}
+.footer-links .linkedin span {
+  margin-right: -95px;
+}
+.footer-links a:hover span {
+    margin-right: 0;
+}
+
+/* Stop color change and animation on footer icons */
+body.touch footer a .footerIcon {
+	fill: #333;
+}
+body.touch .footer-links a span {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .footer-links a span {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------
+			88  88   dP"Yb   8b    d8  888888
+			88  88  dP   Yb  88b  d88  88__
+			888888  Yb   dP  88YbdP88  88""
+			88  88   YbodP   88 YY 88  888888
+----------------------------------------------- */
+main {
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  flex-flow: row wrap;
+  flex: 0 0 auto; /* used for sticky footer */
+  justify-content: center;
+}
+
+.content.article.intro {
+  line-height: 1.5em;
+  font-size: clamp(1.2rem, 3.7vw, 1.4rem);
+  margin-top: 35px;
+  margin-bottom: 50px;
+  flex: 0 0 calc(100% - 3em);
+}
+.container.tentwentyfour, .container.article {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  flex-grow: 1;
+}
+.content.tentwentyfour, .content.article {
+  display: inline-block;
+}
+.container.tentwentyfour, .content.tentwentyfour {
+    /* Used for Most not full screen content */
+    max-width: 1024px;
+    padding: 0 calc(48% - 512px);
+}
+
+.container.article, .content.article {
+    /* Designed for best legibility of large amounts of text information */
+    max-width: 720px;
+    padding: 0 calc(48% - 360px);
+}
+
+.tile {
+  display: block;
+  flex: 1 0 calc(25% - 4px);
+  margin: 2px;
+}
+.tile.double {
+  flex: 1 0 calc(50% - 4px);
+}
+.tile a {
+  display: flex;
+  position: relative;
+  height: 200px;
+  flex-flow: row wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #555;
+  /* transition: background-blend-mode 350ms ease-in-out; */
+}
+
+.tile:hover a, .tile a:focus {
+  /* background-blend-mode: overlay; */
+}
+
+.tile-overlay {
+  opacity: 0;
+  background: radial-gradient(rgba(0,0,0,.5) 0%, rgba(0,0,0,.2) 100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 350ms ease-in-out;
+}
+body.touch .tile-overlay {
+  background: radial-gradient(rgba(0,0,0,.1) 0%, rgba(0,0,0,.0) 100%);
+  opacity: 1;
+}
+.tile a:hover .tile-overlay {
+  opacity: 1;
+  /* display: inline-block; */
+}
+.tile svg, .tile img.tile-logo {
+  opacity: 0;
+  transform: scale(.95);
+  max-width: calc(70% - 20px);
+  max-height: calc(45% - 20px);
+  margin: 10px;
+  transition: opacity 350ms ease-in-out, transform 350ms ease-in-out;
+  fill: white;
+}
+.tile svg {
+  width: 100%;
+}
+.tile-logo {
+  /* fill: white; */
+}
+img.tile-logo {
+  width: auto;
+}
+.tile:hover svg, .tile a:focus svg,
+.tile:hover img.tile-logo, .tile a:focus img.tile-logo {
+  opacity: 1;
+  transform: scale(1);
+}
+.lock {
+  width: 14px;
+  margin: 0 8px 4px;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+.title {
+  color: white;
+  /* display: inline-block; */
+  display: none;
+  font-size: .75em;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 0 4px 10px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  align-self: flex-end;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+#design a:hover .title {
+  display: none;
+}
+
+body.touch .title {
+  display: none;
+}
+body.touch .tile svg,
+body.touch .tile img.tile-logo {
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.2));
+}
+
+#art .title {
+  display: block;
+}
+
+/* ------------------------------------------------------------------
+			88""Yb  88""Yb   dP"Yb    88888  888888   dP""b8  888888
+			88__dP  88__dP  dP   Yb      88  88__    dP   `"    88
+			88"""   88"Yb   Yb   dP  o.  88  88""    Yb         88
+			88      88  Yb   YbodP   "bodP'  888888   YboodP    88
+-------------------------------------------------------------------- */
+
+.order-flip {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.align-center {
+  text-align: center;
+}
+
+/* CONTENT LAYOUT
+----------------------------------------------- */
+.content {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  flex: 0 0 calc(100% - 20px);
+  margin: 0 10px 20px;
+  justify-content: center;
+}
+
+/* .content a {
+  position: relative;
+  width: 100%;
+  text-decoration: none;
+} */
+
+.hero {
+  display: flex;
+  flex: 0 0 100%;
+  height: 200px;
+  margin: 0 0 20px 0;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+}
+
+.new-hero-logo {
+  flex: 0 1 180px;
+  max-width: calc(100% - 20px);
+  margin: 10px;
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.8));
+}
+
+.content.full {
+  flex: 1 0 260px;
+  min-width: calc(100% - 20px);
+}
+.content.two-thirds {
+  flex: 1 0 260px;
+  min-width: calc(66% - 20px);
+  max-width: 720px;
+}
+.content.half {
+  flex: 1 0 260px;
+  min-width: calc(50% - 20px);
+  max-width: 720px;
+}
+.content.third {
+  flex: 1 0 260px;
+  min-width: calc(33% - 20px);
+  max-width: 720px;
+}
+.content.fourth {
+  flex: 1 0 160px;
+  min-width: calc(25% - 20px);
+  max-width: 220px;
+}
+
+
+
+.content .img-caption {
+  position: absolute;
+  bottom: 0;
+  display: none;
+  width: calc(100% - 8px);
+  color: #666;
+  background: hsla(0,100%,100%,0.8);
+  padding: 4px;
+  font-size: .8em;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.content:hover .img-caption {
+  display: block;
+}
+
+.article-width-video {
+  width: 90%;
+  max-width: 720px;
+  margin: 0 auto 30px;
+}
+
+/* More Content */
+.work-projects {
+  display: flex;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  flex-flow: row wrap;
+  flex: 0 0 auto; /* used for sticky footer */
+}
+.nixon .nixon, .bcg .bcg, .citi .citi, .uwm .uwm, .puma .puma, .lazboy .lazboy, .twc .twc, .remesh .remesh, .nyandco .nyandco, .maxduggan .maxduggan, .sani .sani, .labaguette .labaguette, .bluecollar .bluecollar, .halloween .halloween, .sideroad .sideroad, .origin .origin {
+  display: none;
+}
+
+/* --------------------------------------------------
+			   db     88""Yb   dP"Yb   88   88  888888
+			  dPYb    88__dP  dP   Yb  88   88    88
+			 dP__Yb   88""Yb  Yb   dP  Y8   8P    88
+			dP""""Yb  88oodP   YbodP   `YbodP'    88
+----------------------------------------------------- */
+#about_max {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 350px;
+  background: url(/about/max-duggan.jpg) 100% 0 no-repeat;
+  line-height: 1.6em;
+  font-size: 1.2em;
+  text-align: center;
+}
+#about_max a {
+  color: #333;
+}
+#blurb-one {
+  flex-basis: 100%;
+  padding: 6% 30% 6% 4%;
+  color: #333;
+}
+#resume {
+  width: 100%;
+  padding: 20px calc(50% - 512px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#resume h1 {
+  flex-basis: 100%;
+  width: 100%;
+  margin: 30px 0 20px 0;
+  font-size: 50px;
+  text-align: center;
+  color: #777;
+  letter-spacing: 0.4em;
+  text-indent: 0.7em;
+}
+.item {
+  flex-basis: 30%;
+  padding: 0 10% 40px;
+}
+#resume h2, #resume h2 a {
+  text-align: center;
+  font-size: 1em;
+  color: #333;
+  margin: 0 0 10px;
+}
+#resume h3 {
+  text-align: center;
+  font-size: 1em;
+  color: #555;
+  text-transform: inherit;
+  margin: 0 0 10px;
+}
+#resume h4 {
+  text-align: center;
+  font-size: .8em;
+  color: #777;
+  margin: 0;
+}
+
+/* TABLES */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+/* Style table headers and table data */
+th,
+td {
+  text-align: center;
+  padding: 16px;
+}
+
+th:first-child,
+td:first-child {
+  text-align: left;
+}
+
+/* Zebra-striped table rows */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.fa-check {
+  color: green;
+}
+
+.fa-remove {
+  color: red;
+}
+
+
+
+
+/*
+8888b.     db    88 88     Yb  dP      dP""b8 88   88 88 8888b.  888888
+ 8I  Yb   dPYb   88 88      YbdP      dP   `" 88   88 88  8I  Yb 88__
+ 8I  dY  dP__Yb  88 88  .o   8P       Yb  "88 Y8   8P 88  8I  dY 88""
+8888Y"  dP""""Yb 88 88ood8  dP         YboodP `YbodP' 88 8888Y"  888888
+ */
+
+body#guide {
+  background-color: #9bb
+}
+
+.guide-container {
+  position: relative;
+  padding: 0 calc(50% - 360px);
+  margin: 20px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+
+/* The container */
+.node {
+  flex: 1 0 160px;
+  min-width: 100%;
+  display: inline-block;
+  /*   position: relative; */
+  cursor: pointer;
+  font-size: 13px;
+  user-select: none;
+}
+
+.node label {
+position: inherit;
+font-size: inherit;
+pointer-events: inherit;
+}
+
+/* Hide the browser's default radio button */
+.node input {
+  display: none;
+}
+
+.node:nth-child(1) .node-title {
+  border-radius: 20px 20px 0 0;
+}
+.node:last-child .node-title {
+  border-radius: 0 0 20px 20px;
+}
+.node:last-child input:checked~.node-title {
+  border-radius: 0;
+}
+.node:last-child input:checked~.node-title~.checklist {
+  border-radius: 0 0 20px 20px;
+}
+
+.node-title {
+  display: flex;
+  flex: 1 0 160px;
+  min-width: 92%;
+  padding: 8px 4%;
+  text-align: center;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  font-size: 1.5em;
+  border-bottom: 2px solid #9bb;
+  color: #8aa;
+}
+
+.node-title span {
+  margin: 2px 1%;
+}
+
+.node input:checked~.node-title {
+  border-bottom: none;
+}
+
+.node input:checked~.node-title span:first-child {
+  color: #f86;
+}
+
+.node-title span:last-child {
+  font-size: 13px;
+}
+
+.list-item:before {
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin: 0 20px 0 4px;
+  background: white;
+  border-radius: 100%;
+}
+
+.checklist {
+  display: none;
+  width: calc(100% - 40px);
+  margin: 0;
+  padding: 20px;
+  list-style: none;
+  font-size: 1.5rem;
+  color: white;
+  background: #f86;
+}
+.checklist .content input {
+display: inherit;
+}
+
+.node:checked~.checklist {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.checklist a {
+  list-style: none;
+  color: white;
+  text-decoration: none;
+}
+.checklist label, .checklist .list-item {
+  display: flex;
+  width: 100%;
+  margin: 0 0 20px;
+  position: inherit;
+  color: white;
+  font-size: .7em;
+  pointer-events: auto;
+  align-items: center;
+}
+.checklist label:last-child {
+    margin: 0;
+}
+
+.checklist label span {
+display: flex;
+flex-flow: row wrap;
+}
+.checklist label span span:nth-child(2) {
+font-size: 12px;
+}
+.checklist label span span:first-child {
+width: 100%;
+}
+
+.checklist input[type="checkbox"] {
+  flex: 0 0 30px;
+  display: flex;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: white;
+  margin: 0 20px 0 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 20%;
+  font: inherit;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+}
+
+.checklist input[type="checkbox"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 350ms transform ease-in-out;
+  box-shadow: inset 1em 1em #f86;
+  /* Windows High Contrast Mode */
+  background-color: inherit;
+}
+
+.checklist input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+/* .checklist input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid white;
+  outline-offset: max(2px, 0.15em);
+} */
+
+/* .checklist input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+} */
+
+/* ---------------------------------------------------------
+				888888    db     88""Yb  88      888888  888888
+				  88     dPYb    88__dP  88      88__      88
+				  88    dP__Yb   88""Yb  88  .o  88""      88
+				  88   dP""""Yb  88oodP  88ood8  888888    88
+------------------------------------------------------------ */
+.tablet_only {
+  display: none;
+}
+
+@media (max-width: 980px) and (min-width: 601px) {
+  .tablet_only {
+    display: block;
+  }
+
+  /* H O M E
+----------------------------------------------- */
+  .tile {
+    flex-basis: calc(33.33% - 4px);
+  }
+
+  /* P R O J E C T
+----------------------------------------------- */
+
+  /* A B O U T
+----------------------------------------------- */
+  #about_max {
+    background-position: 87% 0;
+  }
+  #blurb-one {
+    padding: 7% 30% 7% 4%;
+  }
+  #resume h1 {
+    font-size: 45px;
+  }
+}/* End Tablet */
+
+/* ------------------------------------------------------------
+				8b    d8   dP"Yb   88""Yb  88  88      888888
+				88b  d88  dP   Yb  88__dP  88  88      88__
+				88YbdP88  Yb   dP  88""Yb  88  88  .o  88""
+				88 YY 88   YbodP   88oodP  88  88ood8  888888
+--------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .tablet_only {
+    display: none;
+  }
+
+  /* Header & Footer
+----------------------------------------------- */
+.footer-links {
+  justify-content: center;
+}
+#copyright {
+    text-align: center;
+}
+
+  /* H O M E
+----------------------------------------------- */
+main {
+  width: 100%;
+  margin-bottom: 0;
+}
+.tile,
+.tile.double {
+  flex-basis: calc(100% - 4px);
+}
+.tile a {
+  width: 100%;
+  height: 100px;
+  background-size: cover;
+}
+.tile svg,
+.tile img.tile-logo {
+  max-height: calc(70% - 20px);
+}
+
+
+  /* P R O J E C T
+----------------------------------------------- */
+  .order-flip .content.two-thirds,
+  .order-flip .content.half,
+  .order-flip .content.half {
+    order: 2;
+  }
+
+  /* A B O U T
+----------------------------------------------- */
+  #about_max {
+    background-position: 86% 0;
+    text-align: left;
+  }
+  #blurb-one {
+    padding: 4% 29% 10% 15px;
+  }
+  .item {
+    flex-basis: 100%;
+    padding: 0 10px 30px;
+  }
+  #resume h1 {
+    font-size: 1.4em;
+  }
+}/* End Media under 600px */
+
+/* For ascii art, I used 4Max from http://patorjk.com/software/taag/#p=display&v=0&f=4Max&t=Project */
+
+
+
+
+
+
+
+.logo {
+  transition: 600ms ease-in-out;
+  -webkit-transition: 600ms ease-in-out;
+  position: absolute;
+  left: 50%;
+  text-decoration: none;
+  margin-top: 13px;
+  width: 75%;
+  height: 40px;
+  display: inline-block;
+  transform: translateX(-50%);
+}
+@media (max-width: 600px) {
+  .logo {
+    left: 0;
+    transform: translateX(-3%);
+  }
+}
+
+.bar-1,
+.bar-2,
+.bar-3,
+.bar-4 {
+  display: inline-block;
+  position: relative;
+  transition: 600ms ease-in-out;
+  -webkit-transition: 600ms ease-in-out;
+  animation-delay: 2s;
+}
+.bar-1::before,
+.bar-1::after,
+.bar-2::before,
+.bar-2::after,
+.bar-3::before,
+.bar-3::after,
+.bar-4::before,
+.bar-4::after {
+  content: "";
+  background: #333;
+  display: inline-block;
+  width: 30px;
+  height: 2px;
+  border-radius: 10px;
+  transition: 600ms ease-in-out;
+  -webkit-transition: 600ms ease-in-out;
+  animation-delay: 2s;
+}
+.logo:hover .bar-1::before,
+.logo:hover .bar-1::after,
+.logo:hover .bar-2::before,
+.logo:hover .bar-2::after,
+.logo:hover .bar-3::before,
+.logo:hover .bar-3::after,
+.logo:hover .bar-4::before,
+.logo:hover .bar-4::after {
+  background: var(--primary);
+}
+
+@keyframes bar-1a { /*before*/
+  0% {
+    transform: rotate(-55deg) translate(0px, 0px);
+    width: 27px;
+  }
+  66% {
+    transform: rotate(-55deg) translate(0px, 0px);
+    width: 27px;
+  }
+  100% {
+    transform: rotate(-45deg) translate(0px, 0px);
+    width: 30px;
+  }
+}
+.bar-1::before {
+  transform: rotate(-45deg) translate(0px, 0px);
+}
+body.home .bar-1::before {
+  animation: 4s ease-in-out bar-1a;
+}
+.logo:hover .bar-1::before {
+  transform: rotate(-55deg) translate(0px, 0px);
+  width: 27px;
+  animation: 4s ease-in-out bar-1a;
+}
+@keyframes bar-1b { /*actual*/
+  0% {
+    transform: translate(-62px, 0px);
+  }
+  66% {
+    transform: translate(-62px, 0px);
+  }
+  100% {
+    transform: translate(calc(-50% - 10px), 0px);
+  }
+}
+.bar-1 {
+  transform: translate(calc(-50% - 10px), 0px);
+  left: 50%;
+}
+body.home .bar-1 {
+  animation: 4s ease-in-out bar-1b;
+}
+.logo:hover .bar-1 {
+  transform: translate(-62px, 0px);
+}
+@keyframes bar-1c { /*after*/
+  0% {
+    transform: rotate(45deg) translate(-10px, 2px);
+    width: 15px;
+  }
+  66% {
+    transform: rotate(45deg) translate(-10px, 2px);
+    width: 15px;
+  }
+  100% {
+    transform: rotate(45deg) translate(-7px, 7px);
+    width: 30px;
+  }
+}
+.bar-1::after {
+  transform: rotate(45deg) translate(-7px, 7px);
+}
+body.home .bar-1::after {
+  animation: 4s ease-in-out bar-1c;
+}
+.logo:hover .bar-1::after {
+  transform: rotate(45deg) translate(-10px, 2px);
+  width: 15px;
+}
+@keyframes bar-2a { /*before*/
+  0% {
+    transform: rotate(-45deg) translate(4px, -4px);
+    width: 15px;
+  }
+  66% {
+    transform: rotate(-45deg) translate(4px, -4px);
+    width: 15px;
+  }
+  100% {
+    transform: rotate(-45deg);
+    width: 30px;
+  }
+}
+.bar-2::before {
+  transform: rotate(-45deg);
+}
+body.home .bar-2::before {
+  animation: 4s ease-in-out bar-2a;
+}
+.logo:hover .bar-2::before {
+  transform: rotate(-45deg) translate(4px, -4px);
+  width: 15px;
+}
+@keyframes bar-2b { /*actual*/
+  0% {
+    transform: translate(-76px, 0px);
+  }
+  66% {
+    transform: translate(-76px, 0px);
+  }
+  100% {
+    transform: translate(calc(-50% - 40px), 0px);
+  }
+}
+.bar-2 {
+  transform: translate(calc(-50% - 40px), 0px);
+  left: 50%;
+}
+body.home .bar-2 {
+  animation: 4s ease-in-out bar-2b;
+}
+.logo:hover .bar-2 {
+  transform: translate(-76px, 0px);
+}
+@keyframes bar-2c { /*after*/
+  0% {
+    transform: rotate(55deg) translate(-5px, 7px);
+    width: 27px;
+  }
+  66% {
+    transform: rotate(55deg) translate(-5px, 7px);
+    width: 27px;
+  }
+  100% {
+    transform: rotate(45deg) translate(-7px, 7px);
+    width: 30px;
+  }
+}
+.bar-2:after {
+  transform: rotate(45deg) translate(-7px, 7px);
+}
+body.home .bar-2:after {
+  animation: 4s ease-in-out bar-2c;
+}
+.logo:hover .bar-2::after {
+  transform: rotate(55deg) translate(-5px, 7px);
+  width: 27px;
+}
+@keyframes bar-3a { /*before*/
+  0% {
+    transform: rotate(-55deg) translate(0px, 0px);
+    width: 27px;
+  }
+  66% {
+    transform: rotate(-55deg) translate(0px, 0px);
+    width: 27px;
+  }
+  100% {
+    transform: rotate(-45deg) translate(0px, 0px);
+    width: 30px;
+  }
+}
+.bar-3:before {
+  transform: rotate(-45deg);
+}
+body.home .bar-3:before {
+  animation: 4s ease-in-out bar-3a;
+}
+.logo:hover .bar-3::before {
+  transform: rotate(-55deg) translate(0px, 0px);
+  width: 27px;
+}
+@keyframes bar-3b { /*actual*/
+  0% {
+    transform: translate(-90px, 0);
+  }
+  66% {
+    transform: translate(-90px, 0);
+  }
+  100% {
+    transform: translate(calc(-50% - 115px), 0);
+  }
+}
+.bar-3 {
+  transform: translate(calc(-50% - 115px), 0);
+  left: 50%;
+}
+body.home .bar-3 {
+  animation: 4s ease-in-out bar-3b;
+}
+.logo:hover .bar-3 {
+  transform: translate(-90px, 0);
+}
+@keyframes bar-3c { /*after*/
+  0% {
+    transform: rotate(55deg) translate(-7px, 10px);
+    width: 27px;
+  }
+  66% {
+    transform: rotate(55deg) translate(-7px, 10px);
+    width: 27px;
+  }
+  100% {
+    transform: rotate(45deg) translate(-7px, 7px);
+    width: 30px;
+  }
+}
+.bar-3:after {
+  transform: rotate(45deg) translate(-7px, 7px);
+}
+body.home .bar-3:after {
+  animation: 4s ease-in-out bar-3c;
+}
+.logo:hover .bar-3::after {
+  transform: rotate(55deg) translate(-7px, 10px);
+  width: 27px;
+}
+@keyframes bar-4a { /*before*/
+  0% {
+    transform: rotate(-45deg) translate(0px, -0px);
+  }
+  66% {
+    transform: rotate(-45deg) translate(0px, -0px);
+  }
+  100% {
+    transform: rotate(-45deg) translate(0px, 0px);
+  }
+}
+.bar-4:before {
+  transform: rotate(-45deg) translate(0px, 0px);
+}
+body.home .bar-4:before {
+  animation: 4s ease-in-out bar-4a;
+}
+.logo:hover .bar-4::before {
+  transform: rotate(-45deg) translate(0px, -0px);
+}
+@keyframes bar-4b { /*actual*/
+  0% {
+    transform: translate(-105px, 0);
+  }
+  66% {
+    transform: translate(-105px, 0);
+  }
+  100% {
+    transform: translate(calc(-50% - 160px), 0);
+  }
+}
+.bar-4 {
+  transform: translate(calc(-50% - 160px), 0);
+  left: 50%;
+}
+body.home .bar-4 {
+  animation: 4s ease-in-out bar-4b;
+}
+.logo:hover .bar-4 {
+  transform: translate(-105px, 0);
+}
+@keyframes bar-4c { /*after*/
+  0% {
+    transform: rotate(45deg) translate(-20px, 20px);
+  }
+  66% {
+    transform: rotate(45deg) translate(-20px, 20px);
+  }
+  100% {
+    transform: rotate(45deg) translate(-28px, 28px);
+    width: 30px;
+  }
+}
+.bar-4:after {
+  transform: rotate(45deg) translate(-28px, 28px);
+}
+body.home .bar-4:after {
+  transform: rotate(45deg) translate(-28px, 28px);
+  animation: 4s ease-in-out bar-4c;
+}
+.logo:hover .bar-4::after {
+  transform: rotate(45deg) translate(-20px, 20px);
+}
+
+/* attempt to stop hover animation when a user clicks on mobile */
+body.touch .logo:hover {
+  transform: none;
+}
