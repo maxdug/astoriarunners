@@ -91,8 +91,12 @@ body {
   background-size: cover;
 } */
 :root {
-  --primary: hsl(210, 100%, 45.5%); /* Darker DodgerBlue */
-  --primary: hsl(324, 100%, 45.5%); /* pink */
+  --ar-cyan: hsl(195, 100%, 50%);
+  --ar-cyan-dark: hsl(195, 100%, 30%);
+  --ar-pink: hsl(335, 100%, 50%);
+  --ar-pink-dark: hsl(335, 100%, 30%);
+  --ar-grape: hsl(268, 100%, 50%);
+  --ar-grape-dark: hsl(268, 100%, 30%);
   --primary-gradient: radial-gradient(hsl(230, 100%, 70%), hsl(190, 100%, 50%));
   --primary-gradient: radial-gradient(hsl(324, 100%, 70%), hsl(324, 100%, 50%));
 }
@@ -745,11 +749,18 @@ header {
 	position: fixed;
 	top: 0;
 	z-index: 999;
-  background: hsl(268, 100%, 50%);
-  justify-content: space-between;
+  background: var(--ar-grape);
+  padding: 10px 20px;
+}
+#header-container {
   display: flex;
-  padding: 20px;
+  width: 100%;
+  max-width: 1440px;
+  justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
+  container-type: inline-size;
+  container-name: header;
 }
 
 
@@ -829,6 +840,13 @@ body.touch nav a:hover::after, body.touch nav a:focus::after {
   height: 25px;
 }
 
+/* If the container is larger than 768px */
+@container header (min-width: 768px) {
+  .logo.mobile {
+    display: none;
+  }
+}
+
 /*--------------------------------------
 
       ███    ██  █████  ██    ██
@@ -860,21 +878,13 @@ nav a img {
 
 
 .burger {
-  /* background: var(--light); */
-  /* position: fixed; */
   z-index: 999;
-  /* top: 15px; */
-  /* left: 15px; */
-  /* padding: 10px 10px 0; */
-  /* display: inline-block; */
-  /* border: 0; */
-  /* background: none; */
-  /* outline: 0; */
-  /* padding: 0; */
+  display: inline-block;
+  border: 0;
+  background: none;
+  outline: 0;
+  padding: 0;
   cursor: pointer;
-  border-bottom: 4px solid white;
-  width: 28px;
-  height: 24px;
   transition: border-bottom 1s ease-in-out;
   -webkit-transition: border-bottom 1s ease-in-out;
 }
@@ -894,9 +904,12 @@ nav a img {
   transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transform: skew(-30deg, 0deg);
+  border-radius: 1px;
+  width: 48px;
 }
 
-.burger:after {
+.burger span {
   content: "";
   display: block;
   border-bottom: 4px solid white;
@@ -906,6 +919,23 @@ nav a img {
   transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transform: skew(-30deg, 0deg);
+  border-radius: 1px;
+  width: 38px;
+}
+
+.burger:after {
+  content: "";
+  display: block;
+  border-bottom: 4px solid white;
+  width: 100%;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transform: skew(-30deg, 0deg);
+  border-radius: 1px;
+  width: 28px;
 }
 
 .burger-check {
@@ -913,28 +943,40 @@ nav a img {
 }
 
 .burger-check:checked ~ .burger {
-  border-bottom: 4px solid transparent;
   transition: border-bottom 0.8s ease-in-out;
   -webkit-transition: border-bottom 0.8s ease-in-out;
 }
 
 .burger-check:checked ~ .burger:before {
-  margin-top: 7px;
-  transform: rotate(-405deg) translateY(1px) translateX(-3px);
-  -webkit-transform: rotate(-405deg) translateY(1px) translateX(-3px);
+  margin-top: 0;
+  transform: rotate(45deg) translateY(10px) translateX(4px) skew(-30deg, 0deg);
+  -webkit-transform: rotate(45deg) translateY(10px) translateX(4px) skew(-30deg, 0deg);
   transition: -webkit-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  width: 38px;
+}
+
+.burger-check:checked ~ .burger span {
+  margin-top: 0;
+  transform: rotate(-45deg) translateY(-2px) translateX(-3px) skew(30deg, 0deg);
+  -webkit-transform: rotate(-45deg) translateY(-2px) translateX(-3px) skew(30deg, 0deg);
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  width: 38px;
 }
 
 .burger-check:checked ~ .burger:after {
-  transform: rotate(405deg) translateY(-4px) translateX(-5px);
-  -webkit-transform: rotate(405deg) translateY(-4px) translateX(-5px);
+  transform: rotate(-45deg) translateY(-8.5px) translateX(3.5px) skew(30deg, 0deg);
+  -webkit-transform: rotate(-45deg) translateY(-8.5px) translateX(3.5px) skew(30deg, 0deg);
   transition: -webkit-transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out;
   transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  width: 38px;
 }
 
 nav.mobile {
@@ -972,6 +1014,11 @@ nav.mobile {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 -20px;
+}
+
+#mbl-nav {
+  font-size: 2rem;
 }
 
 .pointer {
@@ -983,6 +1030,9 @@ nav.mobile {
 }
 @media (max-width: 768px) {
   nav.desktop {
+    display: none;
+  }
+  #rsvp .desktop {
     display: none;
   }
   .burger {
