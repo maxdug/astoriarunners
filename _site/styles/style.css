@@ -1180,6 +1180,7 @@ body.touch .footer-links a span {
   text-align: center;
   padding: 10px;
   font-weight: bold;
+  z-index: 999;
 }
 #alert-banner a {
   color: white;
