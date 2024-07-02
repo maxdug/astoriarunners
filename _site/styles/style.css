@@ -1170,6 +1170,21 @@ body.touch .footer-links a span {
 ----------------------------------------------------------------------------------------*/
 
 
+/* ALERT BANNER */
+#alert-banner {
+  width: 100%;
+  position: fixed;
+  background-color: var(--ar-pink);
+  color: white;
+  bottom: 0;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+}
+#alert-banner a {
+  color: white;
+}
+
 
 /*
       88  88 888888 88""Yb  dP"Yb
