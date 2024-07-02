@@ -1005,7 +1005,7 @@ nav.mobile {
   text-align: center;
 }
 .burger-check:checked ~ nav.mobile {
-  max-height: 100vh;
+  max-height: calc(100vh - 45px);
   transition: max-height 0.5s ease-in-out;
   padding: 20px;
   transition: -webkit-transform 0.5s ease-in-out;
@@ -1016,7 +1016,7 @@ nav.mobile {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 -20px;
+  margin: 48px -20px 0;
 }
 
 #mbl-nav {
