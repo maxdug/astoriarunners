@@ -81,7 +81,7 @@ body {
   flex-direction: column;
   margin: 45px 0 0;
   color: #333;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 300;
   align-items: center;
 }
@@ -198,10 +198,12 @@ h1 a:visited {
   flex: 0 0 100%;
   font-size: clamp(1.7rem,5.6vw,2.3rem);
   margin: 1em 0 .3em;
-  color: #333;
-  font-weight: 300;
-  /* text-transform: uppercase; */
+  color: var(--ar-grape);
   text-decoration: none;
+  font-weight: 900;
+  font-style: italic;
+  padding-top: 60px;
+  margin-top: -60px;
 }
 h1 a:hover {
   color: black;
@@ -1180,7 +1182,7 @@ body.touch .footer-links a span {
   display: flex;
   width: calc(100%);
   height: clamp(70vh,32vw,50vh);
-  margin: 0;
+  margin: 0 0 40px;
   padding: 0 20px;
   justify-content: center;
   align-items: center;
