@@ -1179,6 +1179,11 @@ body.touch .footer-links a span {
   border-radius: 1em;
   padding: 1em;
   margin: 20px 0;
+  line-height: 1.5em;
+}
+
+.maps {
+  border-radius: 1em;
 }
 
 /* ALERT BANNER */
