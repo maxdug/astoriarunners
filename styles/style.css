@@ -202,7 +202,7 @@ h1 a:visited {
   text-decoration: none;
   font-weight: 900;
   font-style: italic;
-  padding-top: 60px;
+  padding-top: 60px; /*For anchor linking */
   margin-top: -60px;
 }
 h1 a:hover {
@@ -407,9 +407,9 @@ button, [type="submit"], [type="button"], [type="reset"], .button, .btn {
   -webkit-appearance: none;
   text-decoration: none;
   text-align: center;
-  background-color: hsl(195, 100%, 50%);
+  background-color: var(--ar-cyan);
   border: none;
-  transition: color 350ms ease-in-out, background-color 350ms ease-in-out;
+  transition: none;
   font-weight: 400;
   letter-spacing: .03em;
   transform: skew(-20deg, 0deg);
@@ -418,9 +418,10 @@ button, [type="submit"], [type="button"], [type="reset"], .button, .btn {
 }
 
 .header-button:focus, .header-button:hover {
-  background-color: hsl(195, 100%, 0%);
+  background-color: var(--ar-pink);
   border: none;
-  transition: color 350ms ease-in-out, background-color 350ms ease-in-out;
+  color: white;
+  transition: none;
 }
 
 button::after, [type="submit"]::after, [type="button"]::after, [type="reset"]::after, .button::after, .btn::after {
@@ -567,6 +568,7 @@ main, section {
  align-items: center;
  flex-grow: 1;
 }
+
 .fourteenforty, .tentwentyfour, .article, .full {
   width: calc(100% - var(--x-doublemargin-l));
 }
@@ -592,8 +594,10 @@ section {
   width: 100%;
   background-position: center;
   background-size: cover;
-  padding: 2rem 0;
+  padding: 0;
   position: relative;
+  padding-top: 60px; /* For anchor linking */
+  margin-top: -60px;
 }
 #presentation section {
   width: 100%;
@@ -812,8 +816,7 @@ nav a.text:hover::after, nav a.text:focus::after {
   content: "";
   width: 100%;
   height: 2px;
-  background: linear-gradient(to right, hsl(210deg 100% 40%), hsl(210deg 100% 70%), hsl(210deg 100% 40%));
-  background: linear-gradient(to right, hsl(324deg 100% 40%), hsl(324deg 100% 70%), hsl(324deg 100% 40%));
+  background: white;
   animation: 350ms ease-in-out nav-bar;
 }
 /* Doesn't work, but leaving as idea for future */
@@ -1175,6 +1178,7 @@ body.touch .footer-links a span {
   border: 1px solid var(--ar-pink);
   border-radius: 1em;
   padding: 1em;
+  margin: 20px 0;
 }
 
 /* ALERT BANNER */
