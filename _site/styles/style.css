@@ -254,7 +254,7 @@ h4 a:hover {
 p {
   width: 100%;
   font-size: 1rem;
-  margin: .5em 0;
+  margin: 0 0 1em 0;
   letter-spacing: .03em;
   line-height: 1.5em;
   color: #555;
@@ -1177,9 +1177,12 @@ body.touch .footer-links a span {
 .call-out {
   border: 1px solid var(--ar-pink);
   border-radius: 1em;
-  padding: 1em;
+  padding: 1.5em;
   margin: 20px 0;
-  line-height: 1.5em;
+  line-height: 2em;
+  color: var(--ar-pink);
+  font-size: .9em;
+  letter-spacing: .05em;
 }
 
 .maps {
