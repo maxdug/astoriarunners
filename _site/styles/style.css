@@ -1193,13 +1193,13 @@ body.touch .footer-links a span {
   flex-direction: column;
   color: var(--ar-grape);
   font-weight: 300;
-  font-size: clamp(.8rem, 3.7vw, 1.3rem);
+  font-size: clamp(.7rem, 3.5vw, 1.3rem);
 }
 .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 0;
 }
 .row:nth-child(even) {
   background: linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, #EFE3FF 61%, rgba(255, 255, 255, 0.00) 100%);
@@ -1208,7 +1208,7 @@ body.touch .footer-links a span {
   font-weight: bold;
 }
 .date {
-  width: 16%;
+  width: 4em;
   display: flex;
   justify-content: flex-end;
   gap: .3em;
@@ -1219,17 +1219,16 @@ body.touch .footer-links a span {
 .time {
   display: flex;
   justify-content: flex-start;
-  width: 13%;
+  width: 3.7em;
   gap: .3em;
 }
 .run {
-  min-width: 45%;
-  max-width: 52%;
+  width: 50%;
   display: flex;
   flex-direction: column;
 }
 .distance {
-  width: 12%;
+  width: 3em;
 }
 
 /*
