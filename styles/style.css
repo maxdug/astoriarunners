@@ -215,10 +215,12 @@ h2 a:visited {
   width: 100%;
   font-size: clamp(1.3rem,4vw,1.5rem);
   margin: 1.3em 0 .3em;
-  color: #333;
+  color: var(--ar-grape);
   font-weight: 400;
   text-decoration: none;
   /* text-transform: uppercase; */
+  font-weight: 900;
+  font-style: italic;
 }
 h2 a:hover {
   color: Black;
@@ -317,7 +319,7 @@ hr {
 b,
 strong {
   /* color: #333; */
-  font-weight: 400;
+  font-weight: 600;
 }
 
 q,
@@ -1168,7 +1170,12 @@ body.touch .footer-links a span {
  ██████  ██████  ██      ██ ██       ██████  ██   ████ ███████ ██   ████    ██    ███████
 
 ----------------------------------------------------------------------------------------*/
-
+/* CALL OUT */
+.call-out {
+  border: 1px solid var(--ar-pink);
+  border-radius: 1em;
+  padding: 1em;
+}
 
 /* ALERT BANNER */
 #alert-banner {
